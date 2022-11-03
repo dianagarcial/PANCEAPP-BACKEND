@@ -1,0 +1,40 @@
+const { Schema, model } = require('mongoose');
+
+const hotelSchema = Schema({
+    nombre: {
+        type: String,
+        required: true,
+    },
+    descripcion: {
+        type: String,
+        required: true,
+    }, 
+    direccion: {
+        type: String,
+        required: true,
+    }, 
+    precio: {
+        type: Number,
+        required: true,
+    }, 
+    nroHabitaciones:{
+        type: Number,
+        required: false,
+    },
+    latitud: {
+        type: Number,
+        required: false,
+    }, 
+    longitud: {
+        type: String,
+        required: false,
+    }, 
+    reserva: {
+        type: Array,
+        ref: "Reserva",
+        required: false,
+    }
+
+})
+
+module.exports = model('Hotel', hotelSchema)
