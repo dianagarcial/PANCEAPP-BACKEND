@@ -17,6 +17,15 @@ const restauranteSchema = Schema({
         type: Number,
         required: true,
     }, 
+    indicacion: {
+        type: String,
+        required: true,
+    },
+    imagen:{
+        type: String,
+        required: false,
+
+    },
     plato: {
         type: Array,
         ref: "Plato",

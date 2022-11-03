@@ -26,9 +26,30 @@ const hotelSchema = Schema({
         required: false,
     }, 
     longitud: {
-        type: String,
+        type: Number,
         required: false,
-    }, 
+    },
+    imagen:{
+        type:String,
+        require:false
+    },
+    imagenaux1:{
+        type:String,
+        require:false
+    },
+    imagenaux2:{
+        type:String,
+        require:false
+    },
+    imagenaux3:{
+        type:String,
+        require:false
+    },
+    indicacion:{
+        type:String,
+        require:false
+
+    },
     reserva: {
         type: Array,
         ref: "Reserva",

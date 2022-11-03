@@ -7,8 +7,8 @@ const crearPlato = async (req, res = response) => {
     try {
         let Plato_ = new Plato(req.body);
         await Plato_.save();
-        let restaurante =await Restaurante.findOne({idRestaurante:req.body.idRestaurante});
-        restaurante.plato.push(Plato_._id);
+        let restaurante =await Restaurante.findById({_id:req.body.idRestaurante});
+        restaurante.plato.push(Plato_);
         await restaurante.save();
         return res.status(201).json({ok: true,Plato_});
     } catch (error) {

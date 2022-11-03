@@ -23,8 +23,20 @@ const listHotel= async(req,res=response)=>{
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
+const listHotelid= async(req,res=response)=>{
+    try{
+       
+        const Hotel_ = await Hotel.findById(_id=req.params.idhotel);
+        if(Hotel_){return res.status(200).json({ok:true,Hotel_});}
+        return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
+    }catch(e){
+       
+        return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
+    }
+}
 
 module.exports = {
     crearHotel,
-    listHotel
+    listHotel,
+    listHotelid
 }
