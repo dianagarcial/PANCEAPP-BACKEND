@@ -23,11 +23,11 @@ const hotelSchema = Schema({
     },
     latitud: {
         type: Number,
-        required: false,
+        required: true,
     }, 
     longitud: {
         type: Number,
-        required: false,
+        required: true,
     },
     imagen:{
         type:String,

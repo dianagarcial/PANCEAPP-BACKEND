@@ -9,6 +9,7 @@ const crearUsuario = async (req, res = response) => {
         let Usuario_ = new Usuario(req.body);
         console.log(Usuario_.contrasena)
         Usuario_.contrasena = bcrypt.hashSync(Usuario_.contrasena, bcrypt.genSaltSync());
+        Usuario_.rol='1'
         await Usuario_.save();
         return res.status(201).json({
             ok: true,
@@ -54,9 +55,9 @@ const loginUsuario = async (req, res = response) => {
                 msg: RESPONSE_MESSAGES.ERR_INVALID_PASSWORD
             })
         }
-        const token= await generateJWT(usuarioDB.id,usuarioDB.nombre,usuarioDB.correo,usuarioDB.direccion,usuarioDB.celular);
+        const token= await generateJWT(usuarioDB.id,usuarioDB.nombre,usuarioDB.correo,usuarioDB.direccion,usuarioDB.celular, usuarioDB.rol);
 
-        return res.status(200).json({ ok: true, _id: usuarioDB })
+        return res.status(200).json({ ok: true, usuario: usuarioDB, token})
     } catch (error) {
 
         return res.status(500).json({ ok: false, msg: RESPONSE_MESSAGES.ERR_500 })

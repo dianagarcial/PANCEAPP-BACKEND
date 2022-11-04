@@ -21,6 +21,10 @@ const usuarioSchema = Schema({
         type: String,
         required: true,
     },
+    rol:{
+        type:String,
+        required:true,
+    },
     reserva:{
         type: Array,
         ref: "Reserva",

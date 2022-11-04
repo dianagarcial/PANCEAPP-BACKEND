@@ -13,7 +13,12 @@ const reservaSchema = Schema({
     nroHabitaciones: {
         type: Number,
         required: true,
+    },
+    cantPersonas: {
+        type: Number,
+        required: true,
     }
+
     
 })
 

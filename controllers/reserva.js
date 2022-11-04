@@ -1,17 +1,21 @@
 const {response}=require('express');
 const Reserva = require("../models/reserva");
+const Hotel =require("../models/hotel")
 const{RESPONSE_MESSAGES}=require('../Helpers/ResponseMessages');
 
 const crearReserva = async (req, res = response) => {
     try {
         let Reserva_ = new Reserva(req.body);
         await Reserva_.save();
+        let hotel =await Hotel.findById({_id:req.body.idHotel});
+        hotel.reserva.push(Reserva_);
+        await hotel.save();
         return res.status(201).json({ok: true,Reserva_});
     } catch (error) {
         console.log(error);
         return res.status(500).json({ok: false,error});
     }
-}
+}   
 const listReserva= async(req,res=response)=>{
     try{
         const Reserva_ = await Reserva.find();
