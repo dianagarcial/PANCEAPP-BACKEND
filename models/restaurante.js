@@ -10,11 +10,11 @@ const restauranteSchema = Schema({
         required: true,
     }, 
     latitud: {
-        type: Number,
+        type: String,
         required: true,
     }, 
     longitud: {
-        type: Number,
+        type: String,
         required: true,
     }, 
     indicacion: {
@@ -23,7 +23,7 @@ const restauranteSchema = Schema({
     },
     imagen:{
         type: String,
-        required: false,
+        required: true,
 
     },
     plato: {
