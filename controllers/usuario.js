@@ -57,7 +57,8 @@ const loginUsuario = async (req, res = response) => {
         }
         const token= await generateJWT(usuarioDB.id,usuarioDB.nombre,usuarioDB.correo,usuarioDB.direccion,usuarioDB.celular, usuarioDB.rol);
         const ids= usuarioDB.id
-        return res.status(200).json({ ok: true, usuario: usuarioDB, token, ids})
+        const rol = usuarioDB.rol
+        return res.status(200).json({ ok: true, usuario: usuarioDB, token, ids, rol})
     } catch (error) {
 
         return res.status(500).json({ ok: false, msg: RESPONSE_MESSAGES.ERR_500 })
