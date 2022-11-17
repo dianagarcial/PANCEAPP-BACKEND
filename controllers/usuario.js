@@ -64,8 +64,16 @@ const loginUsuario = async (req, res = response) => {
     }
 }
 
+const revalidateToken= async(req,res=response) => {
+    let {id,nombre,correo,rol}=req;
+    const token= await generateJWT(id,nombre,correo,rol);
+   return res.status(200).json({ok:true,token,uid:id,nombre,correo,rol});
+}
+
+
 module.exports = {
     crearUsuario,
     listUsuario,
-    loginUsuario
+    loginUsuario,
+    revalidateToken
 }

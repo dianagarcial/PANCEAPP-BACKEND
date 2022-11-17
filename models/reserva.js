@@ -17,6 +17,17 @@ const reservaSchema = Schema({
     cantPersonas: {
         type: Number,
         required: true,
+    },
+    hotel:{
+        type: Array,
+        ref: "Hotel",
+        required: false,
+
+    },
+    usuario:{
+        type: Array,
+        ref:'Usuario',
+        required:false,
     }
 
     

@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const { crearReserva, listReserva } = require('../controllers/reserva');
+const { crearReserva, listReserva, listReservaId } = require('../controllers/reserva');
 
 router.post('/new', crearReserva);
-router.post('/todos', listReserva);
+router.get('/todos', listReserva);
+router.get('/todos/cliente', listReservaId)
 module.exports = router

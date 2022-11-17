@@ -10,11 +10,23 @@ const pedidoSchema = Schema({
         type: Date,
         required: true,
     }, 
-    platos: {
+    ordenes: {
         type: Array,
-        ref: "Plato",
+        ref: "Orden",
         required: false,
     },
+    
+    restaurante:{
+        type: Array,
+        ref: "Restaurante",
+        required: false,
+
+    },
+    usuario:{
+        type: Array,
+        ref:'Usuario',
+        required:false,
+    }
     
     
 })
