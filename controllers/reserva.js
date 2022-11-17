@@ -12,7 +12,7 @@ const crearReserva = async (req, res = response) => {
         Reserva_.hotel.push(hotel)
         hotel.reserva.push(Reserva_);
         await hotel.save();
-        let usuario =await Usuario.findById({_id:"636575b67f4ae816b98b9806"});
+        let usuario =await Usuario.findById(req.body.ids);
         Reserva_.usuario.push(usuario)
         usuario.reserva.push(Reserva_);
         await usuario.save();
