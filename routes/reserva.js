@@ -4,5 +4,5 @@ const { crearReserva, listReserva, listReservaId } = require('../controllers/res
 
 router.post('/new', crearReserva);
 router.get('/todos', listReserva);
-router.get('/todos/cliente', listReservaId)
+router.get('/:id', listReservaId)
 module.exports = router

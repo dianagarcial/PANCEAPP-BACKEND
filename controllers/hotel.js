@@ -34,9 +34,21 @@ const listHotelid= async(req,res=response)=>{
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
+const updateHotel = async (req, res = response) => {
+    try {
+        const hotel = await Hotel.findById( req.params.id );
+        if ( !hotel ) {return res.status(404).json({ok: true,msg: RESPONSE_MESSAGES.ERR_NOT_FOUND});}
+        await Hotel.updateOne({_id:req.params.id}, {$set:{...req.body}}, { upsert: true });
+        return res.status(200).json({ok: true,msg:RESPONSE_MESSAGES.SUCCESS_2XX})
+    } catch (e) {
+        console.log(`updateRama: Internal server error: ${e}`);
+        return res.status(500).json({ok: false,msg: RESPONSE_MESSAGES.ERR_500})
+    }
+}
 
 module.exports = {
     crearHotel,
     listHotel,
-    listHotelid
+    listHotelid,
+    updateHotel
 }
