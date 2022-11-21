@@ -30,12 +30,6 @@ const usuarioSchema = Schema({
         ref: "Reserva",
         required: false,
 
-    },
-    ordenes:{
-        type: Array,
-        ref: "Orden",
-        required: false,
-
     }
    
 })

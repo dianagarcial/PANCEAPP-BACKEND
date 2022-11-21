@@ -10,8 +10,6 @@ const crearOrden = async (req, res = response) => {
         console.log(req.body.ids)
         let usuario =await Usuario.findById(req.body.ids);
         Orden_.usuario.push(usuario)
-        usuario.ordenes.push(Orden_);
-        await usuario.save();
         await Orden_.save();        
         return res.status(201).json({ok: true,Orden_});
     } catch (error) {
@@ -30,6 +28,17 @@ const listOrdenes= async(req,res=response)=>{
     }
 }
 
+const listOrdenesPendientes= async(req,res=response)=>{
+    try{
+        let ordenPendiente = await Orden.find({estado:0});
+        if(ordenPendiente){return res.status(200).json({ok:true,ordenPendiente});}
+        return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
+    }catch(e){
+        logger.error(`readEventos: Internal server error: ${e}`);
+        return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
+    }
+}
+
 const listOrden= async(req,res=response)=>{
     try{
        
@@ -41,6 +50,11 @@ const listOrden= async(req,res=response)=>{
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
+
+
+
+
+
 
 const updateOrden = async (req, res = response) => {
     try {
@@ -70,6 +84,7 @@ module.exports = {
     crearOrden,
     listOrdenes,
     listOrden,
+    listOrdenesPendientes,
     updateOrden,
     deleteOrden
 }
