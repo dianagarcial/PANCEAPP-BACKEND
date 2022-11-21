@@ -14,8 +14,6 @@ const crearReserva = async (req, res = response) => {
         await hotel.save();
         let usuario =await Usuario.findById(req.body.ids);
         Reserva_.usuario.push(usuario)
-        usuario.reserva.push(Reserva_);
-        await usuario.save();
         await Reserva_.save();
         return res.status(201).json({ok: true,Reserva_});
     } catch (error) {
