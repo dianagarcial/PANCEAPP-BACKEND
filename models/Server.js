@@ -6,7 +6,7 @@ class Server {
         this.app  = express();
         this.port = process.env.PORT;
         this.Hotel='hotel';
-        this.Pedido='pedido';
+        this.Orden='orden';
         this.Plato='plato';
         this.Reserva='reserva';
         this.Restaurante='restaurante';
@@ -16,7 +16,7 @@ class Server {
     }
     routes(){
         this.app.use(`/api/${this.Hotel}`, require('../routes/hotel'));
-        this.app.use(`/api/${this.Pedido}`, require('../routes/pedido'));
+        this.app.use(`/api/${this.Orden}`, require('../routes/orden'));
         this.app.use(`/api/${this.Plato}`, require('../routes/plato'));
         this.app.use(`/api/${this.Reserva}`, require('../routes/reserva'));
         this.app.use(`/api/${this.Restaurante}`, require('../routes/restaurante'));

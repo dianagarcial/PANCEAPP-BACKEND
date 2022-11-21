@@ -9,6 +9,22 @@ const ordenSchema = Schema({
         required: false,
     },
 
+    fecha:{
+        type:Date,
+        required:true
+    },
+
+    usuario:{
+        type: Array,
+        ref:'Usuario',
+        required:true,
+    },
+    estado:{
+        type:Number,
+        required:true
+    }
+    
+
     
     
 })

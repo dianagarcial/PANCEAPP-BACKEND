@@ -1,11 +1,18 @@
 const {response}=require('express');
 const Orden = require("../models/orden");
+const Usuario = require("../models/usuario")
 const{RESPONSE_MESSAGES}=require('../Helpers/ResponseMessages');
 
 const crearOrden = async (req, res = response) => {
     try {
         let Orden_ = new Orden(req.body);
         await Orden_.save();
+        console.log(req.body.ids)
+        let usuario =await Usuario.findById(req.body.ids);
+        Orden_.usuario.push(usuario)
+        usuario.ordenes.push(Orden_);
+        await usuario.save();
+        await Orden_.save();        
         return res.status(201).json({ok: true,Orden_});
     } catch (error) {
         console.log(error);

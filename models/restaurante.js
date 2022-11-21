@@ -31,6 +31,7 @@ const restauranteSchema = Schema({
         ref: "Plato",
         required: false,
     }
+   
 })
 
 module.exports = model('Restaurante', restauranteSchema)

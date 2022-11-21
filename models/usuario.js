@@ -31,9 +31,9 @@ const usuarioSchema = Schema({
         required: false,
 
     },
-    pedido:{
+    ordenes:{
         type: Array,
-        ref: "Pedido",
+        ref: "Orden",
         required: false,
 
     }
