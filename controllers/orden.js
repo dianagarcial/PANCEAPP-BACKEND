@@ -23,7 +23,7 @@ const listOrdenes= async(req,res=response)=>{
         if(Orden_){return res.status(200).json({ok:true,Orden_});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
@@ -34,7 +34,7 @@ const listOrdenesPendientes= async(req,res=response)=>{
         if(ordenPendiente){return res.status(200).json({ok:true,ordenPendiente});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
@@ -45,7 +45,7 @@ const listOrdenesFinalizados= async(req,res=response)=>{
         if(ordenFinalizado){return res.status(200).json({ok:true,ordenFinalizado});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
@@ -75,7 +75,7 @@ const updateOrden = async (req, res = response) => {
         await orden.save()             
         return res.status(200).json({ok: true,orden,msg:RESPONSE_MESSAGES.SUCCESS_2XX})
     } catch (e) {
-        console.log(`updateRama: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok: false,msg: RESPONSE_MESSAGES.ERR_500})
     }
 }
@@ -87,7 +87,7 @@ const deleteOrden= async(req,res=response)=>{
         await Orden.findByIdAndDelete( req.params.idOrden );
         return res.status(200).json({ok: true,msg:RESPONSE_MESSAGES.SUCCESS_2XX});
     } catch (e) {
-        console.log(`deleteRama: Internal server error: ${e}`);
+        console.log(` Internal server error: ${e}`);
         res.status(500).json({ok: false,msg: RESPONSE_MESSAGES.ERR_500})
     }
 }

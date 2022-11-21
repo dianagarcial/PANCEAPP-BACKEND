@@ -27,7 +27,7 @@ const listReserva= async(req,res=response)=>{
         if(Reserva_){return res.status(200).json({ok:true,Reserva_});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
@@ -38,7 +38,7 @@ const listReservaId= async(req,res=response)=>{
         if(Reserva_){return res.status(200).json({ok:true,Reserva_});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }

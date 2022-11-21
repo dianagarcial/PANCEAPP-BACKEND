@@ -23,7 +23,7 @@ const listPlato= async(req,res=response)=>{
         if(Plato_){return res.status(200).json({ok:true,Plato_});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
@@ -35,35 +35,11 @@ const listPlatoTipo= async(req,res=response)=>{
         if(Plato_){return res.status(200).json({ok:true,Plato_});}
         return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});
     }catch(e){
-        logger.error(`readEventos: Internal server error: ${e}`);
+        console.log(`Internal server error: ${e}`);
         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500});
     }
 }
-// const eliminarPlato = async (req,res=response) =>{
-//     try{
-//         const platoDB = await Plato.findById(req.params.id);
-//         if(!platoDB){return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});}
-//         let restaurante = await Restaurante.findOne({plato:platoDB.id});
-//         if( !restaurante ) {return res.status(404).json({ok:false,msg:RESPONSE_MESSAGES.ERR_NOT_FOUND});}
-         
-//                 try{
-//                     restaurante.plato.forEach((plato)=>{
-//                         if(plato===req.params.id){
-//                             rama.plato.splice(scout, 1);}});
-//                     await restaurante.save();
-//                     await Plato.findByIdAndDelete(req.params.id);
-//                     return res.status(200).json({ok:true,msg:RESPONSE_MESSAGES.SUCCESS_2XX});
-//                 }catch(e){
-//                     console.log(`deleteScout: Internal server error: ${e}`);
-//                 }
-//             }
-//             catch(e){
-//                 console.log(`deleteScout: Internal server error: ${e}`);
-//             }
-//         return res.status(500).json({ok:false,msg:RESPONSE_MESSAGES.ERR_500})
-       
-//         }
-    
+
 module.exports = {
     crearPlato, listPlato, listPlatoTipo 
     //eliminarPlato
